@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/CompuMovilFirebase.iml" filepath="$PROJECT_DIR$/CompuMovilFirebase.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CompuMovilFirebase.iml" filepath="$PROJECT_DIR$/CompuMovilFirebase.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lab4FCM/Lab4FCM.iml" filepath="$PROJECT_DIR$/Lab4FCM/Lab4FCM.iml" />
       <module fileurl="file://$PROJECT_DIR$/Lab4FCM/Lab4FCM.iml" filepath="$PROJECT_DIR$/Lab4FCM/Lab4FCM.iml" />
     </modules>
   </component>
