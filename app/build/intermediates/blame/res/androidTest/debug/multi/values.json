@@ -1,0 +1,26 @@
+[
+    {
+        "outputFile": "/Users/james/Documents/UNIVERSITY/CompuMovil/CompuMovilFirebase/app/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values/values.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 45,
+                    "endOffset": 96
+                },
+                "from": {
+                    "file": "/Users/james/.android/build-cache/bbe5887bcb3fe9b1f3bbe5b8d1ea29d272857e08/output/res/values/values.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 229,
+                        "endColumn": 45,
+                        "endOffset": 270
+                    }
+                }
+            }
+        ]
+    }
+]

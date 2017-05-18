@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "220007038611",
+    "firebase_url": "https://compumovil-41b14.firebaseio.com",
+    "project_id": "compumovil-41b14",
+    "storage_bucket": "compumovil-41b14.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:220007038611:android:ea8adfd79aae0ce3",
+        "android_client_info": {
+          "package_name": "co.edu.udea.gr06_20171compumovil.lab4"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "220007038611-p94r7sl4lu21jh74v0lgtq789k5q5g52.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDW1zYPaBAojG4ztH-bxzkd32oHCHB0_ss"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

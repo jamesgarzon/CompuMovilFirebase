@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/Users/james/Documents/UNIVERSITY/CompuMovil/CompuMovilFirebase/app/build/intermediates/res/merged/debug/layout-v21/notification_template_custom_big.xml",
+        "source": "/Users/james/.android/build-cache/40b73c32d404d69871e31d6648020d714f7573d5/output/res/layout-v21/notification_template_custom_big.xml"
+    },
+    {
+        "merged": "/Users/james/Documents/UNIVERSITY/CompuMovil/CompuMovilFirebase/app/build/intermediates/res/merged/debug/layout-v21/notification_action.xml",
+        "source": "/Users/james/.android/build-cache/40b73c32d404d69871e31d6648020d714f7573d5/output/res/layout-v21/notification_action.xml"
+    },
+    {
+        "merged": "/Users/james/Documents/UNIVERSITY/CompuMovil/CompuMovilFirebase/app/build/intermediates/res/merged/debug/layout-v21/notification_action_tombstone.xml",
+        "source": "/Users/james/.android/build-cache/40b73c32d404d69871e31d6648020d714f7573d5/output/res/layout-v21/notification_action_tombstone.xml"
+    },
+    {
+        "merged": "/Users/james/Documents/UNIVERSITY/CompuMovil/CompuMovilFirebase/app/build/intermediates/res/merged/debug/layout-v21/notification_template_icon_group.xml",
+        "source": "/Users/james/.android/build-cache/40b73c32d404d69871e31d6648020d714f7573d5/output/res/layout-v21/notification_template_icon_group.xml"
+    }
+]

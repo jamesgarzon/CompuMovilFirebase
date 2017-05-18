@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/Users/james/Documents/UNIVERSITY/CompuMovil/CompuMovilFirebase/app/build/intermediates/res/merged/debug/mipmap-xxhdpi/ic_launcher.png",
+        "source": "/Users/james/Documents/UNIVERSITY/CompuMovil/CompuMovilFirebase/app/src/main/res/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/james/Documents/UNIVERSITY/CompuMovil/CompuMovilFirebase/app/build/intermediates/res/merged/debug/mipmap-xxhdpi/ic_launcher_round.png",
+        "source": "/Users/james/Documents/UNIVERSITY/CompuMovil/CompuMovilFirebase/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png"
+    }
+]
