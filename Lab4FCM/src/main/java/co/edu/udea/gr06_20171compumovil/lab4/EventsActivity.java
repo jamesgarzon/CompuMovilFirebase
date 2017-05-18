@@ -1,10 +1,9 @@
 package co.edu.udea.gr06_20171compumovil.lab4;
 
-import android.app.SearchManager;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
@@ -12,21 +11,24 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import co.edu.udea.gr06_20171compumovil.lab4.fragments.EventsRecyclerFragment;
+import co.edu.udea.gr06_20171compumovil.lab4.fragments.EventDetailFragment;
+import co.edu.udea.gr06_20171compumovil.lab4.fragments.EventsFragment;
+import co.edu.udea.gr06_20171compumovil.lab4.pojos.Event;
 
 public class EventsActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, EventsFragment.OnListFragmentInteractionListener, EventDetailFragment.OnFragmentInteractionListener {
 
     private Toolbar toolbar;
     private SearchView searchView;
@@ -47,7 +49,7 @@ public class EventsActivity extends AppCompatActivity
         if (frag != null) {
             if (frag.equals("1")) {
                 Fragment fragment = null;
-                fragment = new EventsRecyclerFragment();
+                fragment = new EventsFragment();
                 if (fragment != null) {
                     FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
                     ft.replace(R.id.content_frame, fragment);
@@ -158,8 +160,9 @@ public class EventsActivity extends AppCompatActivity
 
         switch (id){
             case R.id.nav_events:
-                fab.setVisibility(View.VISIBLE);
-                fragment = new EventsRecyclerFragment();
+//                fab.setVisibility(View.VISIBLE);
+
+                fragment = new EventsFragment();
                 break;
             /*case R.id.nav_profile:
                 fab.setVisibility(View.INVISIBLE);
@@ -187,4 +190,21 @@ public class EventsActivity extends AppCompatActivity
         return true;
     }
 
+
+    @Override
+    public void onListFragmentInteraction(Event item) {
+        Log.d("EVENT", item.getName());
+        Fragment fragment = new EventDetailFragment(item);
+        Bundle args = new Bundle();
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.content_frame, fragment);
+        ft.addToBackStack("fragment");
+        ft.commit();
+//        Toast.makeText(getApplicationContext(), "You will make it ;)", Toast.LENGTH_SHORT);
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
+    }
 }

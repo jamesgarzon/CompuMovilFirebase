@@ -1,0 +1,7 @@
+#Tue May 16 00:45:43 COT 2017
+base.0=/Users/james/Documents/UNIVERSITY/CompuMovil/CompuMovilFirebase/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_ee1d4a6569e5d8da8518d8318b5ba9b0a7465a44
+renamed.1=classes.dex
+renamed.0=classes2.dex
+file.1=/Users/james/Documents/UNIVERSITY/CompuMovil/CompuMovilFirebase/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_07bb09ba56d25e1b66c71e822e01a1b2665bdb69/classes.dex
+base.1=/Users/james/Documents/UNIVERSITY/CompuMovil/CompuMovilFirebase/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_07bb09ba56d25e1b66c71e822e01a1b2665bdb69
+file.0=/Users/james/Documents/UNIVERSITY/CompuMovil/CompuMovilFirebase/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_ee1d4a6569e5d8da8518d8318b5ba9b0a7465a44/classes.dex
