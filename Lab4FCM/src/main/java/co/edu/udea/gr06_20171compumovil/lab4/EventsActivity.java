@@ -65,6 +65,8 @@ public class EventsActivity extends AppCompatActivity
         nameUser = (TextView)header.findViewById(R.id.tvNameUser);
         email = (TextView)header.findViewById(R.id.tvEmail);
 
+        email.setText(firebaseAuth.getCurrentUser().getEmail());
+
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
 

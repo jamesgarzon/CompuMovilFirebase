@@ -40,25 +40,12 @@ public class EventDetailFragment extends Fragment {
         mEvent = event;
     }
 
-//    // TODO: Rename and change types and number of parameters
-//    public static EventDetailFragment newInstance(Event event) {
-//        EventDetailFragment fragment = new EventDetailFragment();
-//        fragment.mEvent = event;
-////        Bundle args = new Bundle();
-////        args.putString(ARG_EVENT, event);
-////        args.putString(ARG_PARAM2, param2);
-////        fragment.setArguments(args);
-//        return fragment;
-//    }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-//        if (getArguments() != null) {
-//            mParam1 = getArguments().getString(ARG_PARAM1);
-//            mParam2 = getArguments().getString(ARG_PARAM2);
-//        }
     }
 
     @Override
@@ -88,6 +75,9 @@ public class EventDetailFragment extends Fragment {
         mLocationView.setText(mEvent.getLocation());
         mResponsableView.setText(mEvent.getResposible());
         mInfoView.setText(mEvent.getInfo());
+
+        getActivity().setTitle(mEvent.getName().toString());
+
         return myInflatedView;
 
     }

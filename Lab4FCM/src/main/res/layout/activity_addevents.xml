@@ -99,7 +99,7 @@
             </android.support.design.widget.TextInputLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
@@ -124,7 +124,6 @@
                     android:layout_width="60dp"
                     android:layout_height="match_parent"
                     android:background="@drawable/ic_date_range_black_24dp"
-                    android:onClick="onClick"
                     android:padding="10dp"
                     android:textColor="#ffffff"
                     android:typeface="serif" />
@@ -142,6 +141,20 @@
                     android:drawableLeft="@drawable/ic_format_align_justify_black_24dp"
                     android:drawablePadding="10dp"
                     android:hint="Informacion general"
+                    android:inputType="textPersonName|textLongMessage|textCapSentences" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/etResponsible"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_person_black_24dp"
+                    android:drawablePadding="10dp"
+                    android:hint="Responsable del Evento"
                     android:inputType="textPersonName|textLongMessage|textCapSentences" />
             </android.support.design.widget.TextInputLayout>
 

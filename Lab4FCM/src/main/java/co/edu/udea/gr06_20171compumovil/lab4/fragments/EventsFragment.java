@@ -65,6 +65,8 @@ public class EventsFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        getActivity().setTitle("Lista de eventos");
+
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
         }
@@ -78,13 +80,6 @@ public class EventsFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_event_list, container, false);
 
-//        mUpdateEventsButton = (Button) container.findViewById(R.id.update_events);
-//        mUpdateEventsButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                updateEvents();
-//            }
-//        });
         mAdapter = new EventsAdapter(events, mListener);
 
 
@@ -123,24 +118,12 @@ public class EventsFragment extends Fragment {
         mListener = null;
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p/>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
         void onListFragmentInteraction(Event item);
     }
 
     public void updateEvents(){
-// Write a message to the database
-
 
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -172,32 +155,5 @@ public class EventsFragment extends Fragment {
             }
         });
 
-//        //making object of RestAdapter
-//        RestAdapter adapter = new RestAdapter.Builder().setEndpoint(url).build();
-//
-//        //Creating Rest Services
-//        RestInterface restInterface = adapter.create(RestInterface.class);
-//
-//        //Calling method to get whether report
-//        restInterface.getEvents(new Callback<List<Event>>() {
-//
-//            @Override
-//            public void success(List<Event> eventsResponse, Response response) {
-//                Log.d("REST", "URL: "+ response.getUrl());
-//                // Check if no view has focus:
-//
-//                String eventss = eventsResponse.toString();
-//                Log.d("EVENTOS", "Events: "+ eventsResponse.toString());
-//                events.clear();
-//                events.addAll(eventsResponse);
-//                mAdapter.notifyDataSetChanged();
-//            }
-//
-//
-//            @Override
-//            public void failure(RetrofitError error) {
-//                Log.d("REST", "Error: " + error.toString());
-//            }
-//        });
     }
 }
