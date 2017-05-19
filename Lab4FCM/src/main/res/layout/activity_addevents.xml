@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        android:weightSum="1">
+
+        <ImageButton android:id="@+id/imageSelect"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginBottom="24dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="0.94"
+            android:background="@drawable/ic_event_black_24dp" />
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText android:id="@+id/etEventName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName|textCapWords"
+                android:drawableLeft="@drawable/ic_event_black_24dp"
+                android:drawablePadding="10dp"
+                android:hint="Nombre del Evento" />
+        </android.support.design.widget.TextInputLayout>
+<!--
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText android:id="@+id/etUrlFoto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName|textCapWords"
+                android:drawablePadding="10dp"
+                android:hint="Url de la Foto" />
+        </android.support.design.widget.TextInputLayout>-->
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/etEventDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Descripcion"
+                android:inputType="textPersonName|textShortMessage"
+                android:drawableLeft="@drawable/ic_description_black_24dp"
+                android:drawablePadding="10dp"
+                />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/etEventUbicacion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Ubicacion"
+                android:inputType="textPersonName"
+                android:drawablePadding="10dp"
+                android:drawableLeft="@drawable/ic_location_on_black_24dp"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+                <EditText
+                    android:id="@+id/etEventDate"
+                    android:layout_width="279dp"
+                    android:layout_height="match_parent"
+                    android:hint="Fecha"
+                    android:drawableLeft="@drawable/ic_date_range_black_24dp"
+                    android:drawablePadding="10dp"
+                    android:inputType="date"
+                    android:imeOptions="actionDone"
+                    android:singleLine="true" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btnFecha"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_date_range_black_24dp"
+                android:padding="10dp"
+                android:textColor="#ffffff"
+                android:typeface="serif"
+                android:onClick="onClick"/>
+
+        </LinearLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/etEventInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Informacion general"
+                android:inputType="textPersonName|textLongMessage|textCapSentences"
+                android:drawableLeft="@drawable/ic_format_align_justify_black_24dp"
+                android:drawablePadding="10dp"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="42dp"
+                android:text="Puntaje:"
+                android:textSize="20dp"
+               android:paddingTop="15dp"/>
+
+            <android.support.v7.widget.AppCompatRatingBar
+                android:id="@+id/rbEventPuntuacion"
+                android:layout_width="250dp"
+                android:layout_height="match_parent"
+                android:clickable="true"
+                android:scaleX="0.8"
+                android:scaleY="0.8"/>
+
+        </LinearLayout>
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btnCrearEvento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:padding="10dp"
+            android:layout_marginTop="20dp"
+            android:text="Crear Evento"
+            android:textSize="20dp"/>
+
+    </LinearLayout>
+</ScrollView>
