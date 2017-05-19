@@ -2,9 +2,7 @@ package co.edu.udea.gr06_20171compumovil.lab4.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -154,7 +152,7 @@ public class EventsFragment extends Fragment {
                     Event event = new Event();
                     event.setName(dataEvent.child("name").getValue().toString());
                     event.setDescription(dataEvent.child("description").getValue().toString());
-                    event.setScore(Integer.parseInt(dataEvent.child("score").getValue().toString()));
+                    event.setScore(Float.parseFloat(dataEvent.child("score").getValue().toString()));
                     event.setPicture(dataEvent.child("picture").getValue().toString());
                     Log.d("FIREBASEDDD", event.getName() + "   "+ event.getScore());
                     events.add(event);

@@ -1,20 +1,35 @@
 package co.edu.udea.gr06_20171compumovil.lab4;
 
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 /**
  * Created by admin on 18/05/2017.
@@ -37,8 +52,14 @@ public class AddEventActivity extends AppCompatActivity implements DatePickerDia
     private Uri mImageUri = null;
 
     private StorageReference mStorage;
+    private DatabaseReference mDatabaseReference;
+    private DatabaseReference mDatabaseUser;
+    private FirebaseAuth mAuth;
+    private FirebaseUser mCurrentUser;
 
     private static final int GALLERY_REQUEST = 1;
+
+    private ProgressDialog mProgressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +73,11 @@ public class AddEventActivity extends AppCompatActivity implements DatePickerDia
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setTitle("Crear Evento");
 
+        mAuth = FirebaseAuth.getInstance();
+        mCurrentUser = mAuth.getCurrentUser();
         mStorage = FirebaseStorage.getInstance().getReference();
+        mDatabaseReference = FirebaseDatabase.getInstance().getReference().child("events");
+        mDatabaseUser = FirebaseDatabase.getInstance().getReference().child("Users").child(mCurrentUser.getUid());
 
         nombre = (TextView) findViewById(R.id.etEventName);
         descripcion = (TextView) findViewById(R.id.etEventDescription);
@@ -62,6 +87,8 @@ public class AddEventActivity extends AppCompatActivity implements DatePickerDia
         infoGeneral = (TextView) findViewById(R.id.etEventInfo);
         imageSelect = (ImageButton) findViewById(R.id.imageSelect);
         createButton = (Button) findViewById(R.id.btnCrearEvento);
+
+        mProgressDialog = new ProgressDialog(this);
 
         createButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,13 +110,67 @@ public class AddEventActivity extends AppCompatActivity implements DatePickerDia
     }
 
     private void createEvent() {
-        String nameEvent = nombre.getText().toString();
-        String description = descripcion.getText().toString();
-        String location = ubicacion.getText().toString();
-        String date = mDateDisplay.getText().toString();
-        String information = infoGeneral.getText().toString();
-        Float punt = puntuacion.getRating();
+        mProgressDialog.setMessage(("creando evento..."));
+        mProgressDialog.show();
 
+        final String nameEvent = nombre.getText().toString();
+        final String description = descripcion.getText().toString();
+        final String location = ubicacion.getText().toString();
+        final String date = mDateDisplay.getText().toString();
+        final String information = infoGeneral.getText().toString();
+       final Float punt = puntuacion.getRating();
+
+        if (!TextUtils.isEmpty(nameEvent) && !TextUtils.isEmpty(description) && punt != 0 && mImageUri != null){
+            StorageReference filePath = mStorage.child("Event_Images").child(mImageUri.getLastPathSegment());
+
+            filePath.putFile(mImageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+                    final Uri downloadUri = taskSnapshot.getDownloadUrl();
+                    final DatabaseReference newEvent = mDatabaseReference.push();
+
+                    mDatabaseUser.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+
+                            newEvent.child("name").setValue(nameEvent);
+                            newEvent.child("description").setValue(description);
+                            newEvent.child("location").setValue(location);
+                            newEvent.child("date").setValue(date);
+                            newEvent.child("info").setValue(information);
+                            newEvent.child("score").setValue(punt);
+                            newEvent.child("picture").setValue(downloadUri.toString());
+                            newEvent.child("uid").setValue(mCurrentUser.getUid());
+                            newEvent.child("responsible").setValue(dataSnapshot.child("name").getValue())
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (task.isSuccessful()) {
+                                                Intent intent = new Intent(AddEventActivity.this, EventsActivity.class);
+                                                startActivity(intent);
+                                            }else {
+                                                Toast.makeText(getApplicationContext(), "Hubo un error", Toast.LENGTH_SHORT).show();
+
+                                            }
+                                        }
+                                    });
+
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
+
+                    mProgressDialog.dismiss();
+
+                }
+            });
+        }else {
+            Toast.makeText(this, "Llene todos los campos", Toast.LENGTH_SHORT).show();
+        }
 
     }
 

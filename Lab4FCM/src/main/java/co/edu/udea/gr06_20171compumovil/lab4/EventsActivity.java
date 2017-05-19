@@ -48,21 +48,6 @@ public class EventsActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Intent intent = getIntent();
-        String frag = intent.getStringExtra("fragment");
-        if (frag != null) {
-            if (frag.equals("1")) {
-                Fragment fragment = null;
-                fragment = new EventsFragment();
-                if (fragment != null) {
-                    FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                    ft.replace(R.id.content_frame, fragment);
-                    ft.addToBackStack("fragment");
-                    ft.commit();
-                }
-            }
-        }
-
         firebaseAuth = FirebaseAuth.getInstance();
         if (firebaseAuth.getCurrentUser() == null){
             startActivity(new Intent(getApplicationContext(),LoginActivity.class));
@@ -80,9 +65,10 @@ public class EventsActivity extends AppCompatActivity
         nameUser = (TextView)header.findViewById(R.id.tvNameUser);
         email = (TextView)header.findViewById(R.id.tvEmail);
 
+        Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
 
-        if (bundle!=null){
+       /* if (bundle!=null){
             nombre= bundle.getString("usuario");
             String correo= bundle.getString("email");
 
@@ -92,7 +78,7 @@ public class EventsActivity extends AppCompatActivity
 
             nameUser.setText(nombre);
             email.setText(correo);
-        }
+        }*/
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -102,7 +88,6 @@ public class EventsActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 Intent in = new Intent(EventsActivity.this, AddEventActivity.class);
-                //in.putExtra("usuario",nombre);
                 startActivity(in);
             }
         });
@@ -125,19 +110,10 @@ public class EventsActivity extends AppCompatActivity
         }
     }
 
-   /* private void activateSearchView(Menu menu) {
-        MenuItem searchItem = menu.findItem(R.id.action_search);
-        searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
-        final SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-        searchView.setSearchableInfo(searchManager.getSearchableInfo(new ComponentName(this, EventsActivity.class)));
-    }*/
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu, menu);
-        //activateSearchView(menu);
 
         return true;
     }
@@ -148,12 +124,6 @@ public class EventsActivity extends AppCompatActivity
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        /*if (id == R.id.action_search) {
-
-            return true;
-        }*/
 
         return super.onOptionsItemSelected(item);
     }
@@ -208,7 +178,6 @@ public class EventsActivity extends AppCompatActivity
         ft.replace(R.id.content_frame, fragment);
         ft.addToBackStack("fragment");
         ft.commit();
-//        Toast.makeText(getApplicationContext(), "You will make it ;)", Toast.LENGTH_SHORT);
     }
 
     @Override
