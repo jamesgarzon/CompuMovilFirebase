@@ -28,6 +28,10 @@ public class EventDetailFragment extends Fragment {
     public TextView mDescriptionView;
     public ImageView mEventImageView;
     public RatingBar mRatingBar;
+    public TextView mInfoView;
+    public TextView mDateView;
+    public TextView mLocationView;
+    public TextView mResponsableView;
 
     private OnFragmentInteractionListener mListener;
 
@@ -69,14 +73,21 @@ public class EventDetailFragment extends Fragment {
         mDescriptionView = (TextView) myInflatedView.findViewById(R.id.event_detail_description);
         mEventImageView = (ImageView) myInflatedView.findViewById(R.id.event_detail_picture);
         mRatingBar = (RatingBar) myInflatedView.findViewById(R.id.event_detail_rating);
-//
+        mDateView = (TextView) myInflatedView.findViewById(R.id.event_detail_fecha);
+        mLocationView = (TextView) myInflatedView.findViewById(R.id.event_detail_location);
+        mResponsableView = (TextView) myInflatedView.findViewById(R.id.event_detail_responsable);
+        mInfoView = (TextView) myInflatedView.findViewById(R.id.event_detail_info);
+
 //
 //
         mNameView.setText(mEvent.getName().toString());
         mDescriptionView.setText(mEvent.getDescription().toString());
         Picasso.with(myInflatedView.getContext()).load(mEvent.getPicture()).into(mEventImageView);
         mRatingBar.setRating(mEvent.getScore());
-        // Inflate the layout for this frag
+        mDateView.setText(mEvent.getDate());
+        mLocationView.setText(mEvent.getLocation());
+        mResponsableView.setText(mEvent.getResposible());
+        mInfoView.setText(mEvent.getInfo());
         return myInflatedView;
 
     }

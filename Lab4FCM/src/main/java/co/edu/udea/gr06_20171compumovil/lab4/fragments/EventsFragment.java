@@ -154,6 +154,11 @@ public class EventsFragment extends Fragment {
                     event.setDescription(dataEvent.child("description").getValue().toString());
                     event.setScore(Float.parseFloat(dataEvent.child("score").getValue().toString()));
                     event.setPicture(dataEvent.child("picture").getValue().toString());
+                    event.setDate(dataEvent.child("date").getValue().toString());
+                    event.setInfo(dataEvent.child("info").getValue().toString());
+                    event.setLocation(dataEvent.child("location").getValue().toString());
+                    event.setResposible(dataEvent.child("responsible").getValue().toString());
+                    event.setId(dataEvent.getKey());
                     Log.d("FIREBASEDDD", event.getName() + "   "+ event.getScore());
                     events.add(event);
                 }
