@@ -9,7 +9,7 @@ public class Event {
 
     private String name;
     private String description;
-    private int score;
+    private float score;
     private String picture;
     private String resposible;
     private String date;
@@ -33,11 +33,11 @@ public class Event {
         this.description = description;
     }
 
-    public int getScore() {
+    public float getScore() {
         return score;
     }
 
-    public void setScore(int score) {
+    public void setScore(float score) {
         this.score = score;
     }
 
