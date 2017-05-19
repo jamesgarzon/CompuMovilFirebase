@@ -2,9 +2,7 @@ package co.edu.udea.gr06_20171compumovil.lab4.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -67,6 +65,8 @@ public class EventsFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        getActivity().setTitle("Lista de eventos");
+
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
         }
@@ -80,13 +80,6 @@ public class EventsFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_event_list, container, false);
 
-//        mUpdateEventsButton = (Button) container.findViewById(R.id.update_events);
-//        mUpdateEventsButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                updateEvents();
-//            }
-//        });
         mAdapter = new EventsAdapter(events, mListener);
 
 
@@ -125,24 +118,12 @@ public class EventsFragment extends Fragment {
         mListener = null;
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p/>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
         void onListFragmentInteraction(Event item);
     }
 
     public void updateEvents(){
-// Write a message to the database
-
 
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -154,7 +135,7 @@ public class EventsFragment extends Fragment {
                     Event event = new Event();
                     event.setName(dataEvent.child("name").getValue().toString());
                     event.setDescription(dataEvent.child("description").getValue().toString());
-                    event.setScore(Integer.parseInt(dataEvent.child("score").getValue().toString()));
+                    event.setScore(Float.parseFloat(dataEvent.child("score").getValue().toString()));
                     event.setPicture(dataEvent.child("picture").getValue().toString());
                     event.setDate(dataEvent.child("date").getValue().toString());
                     event.setInfo(dataEvent.child("info").getValue().toString());
@@ -174,32 +155,5 @@ public class EventsFragment extends Fragment {
             }
         });
 
-//        //making object of RestAdapter
-//        RestAdapter adapter = new RestAdapter.Builder().setEndpoint(url).build();
-//
-//        //Creating Rest Services
-//        RestInterface restInterface = adapter.create(RestInterface.class);
-//
-//        //Calling method to get whether report
-//        restInterface.getEvents(new Callback<List<Event>>() {
-//
-//            @Override
-//            public void success(List<Event> eventsResponse, Response response) {
-//                Log.d("REST", "URL: "+ response.getUrl());
-//                // Check if no view has focus:
-//
-//                String eventss = eventsResponse.toString();
-//                Log.d("EVENTOS", "Events: "+ eventsResponse.toString());
-//                events.clear();
-//                events.addAll(eventsResponse);
-//                mAdapter.notifyDataSetChanged();
-//            }
-//
-//
-//            @Override
-//            public void failure(RetrofitError error) {
-//                Log.d("REST", "Error: " + error.toString());
-//            }
-//        });
     }
 }
